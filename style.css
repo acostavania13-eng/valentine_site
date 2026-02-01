@@ -50,13 +50,13 @@ button {
 }
 
 #noBtn img {
-  width: 80px;
+  width: 12px;
   cursor: pointer;
   transition: transform 0.2s;
 }
 
 #noBtn img:hover {
-  transform: scale(1.05);
+  transform: scale(0.5);
 }
 
 #message {
