@@ -43,8 +43,20 @@ button {
 }
 
 #noBtn {
-  background-color: #ff6b6b;
+  background: none;
+  border: none;
   position: absolute;
+  padding: 0;
+}
+
+#noBtn img {
+  width: 120px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#noBtn img:hover {
+  transform: scale(1.05);
 }
 
 #message {
