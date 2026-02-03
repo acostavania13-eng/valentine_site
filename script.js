@@ -1,3 +1,6 @@
+const bgMusic = new Audio("music/opening-music.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.5;
 const envelope = document.getElementById("envelope");
 const envelopeScreen = document.getElementById("envelope-screen");
 const letterScreen = document.getElementById("letter-screen");
@@ -21,6 +24,7 @@ envelope.onclick = () => {
   envelopeScreen.style.display = "none";
   letterScreen.classList.remove("hidden");
   startHearts();
+  bgMusic.play();
 };
 
 continueBtn.onclick = () => {
@@ -38,8 +42,10 @@ noFrog.onmouseover = () => {
   yesScale += 0.15;
   yesCat.style.transform = `scale(${yesScale})`;
 
-  new Audio("https://www.myinstants.com/media/sounds/frog.mp3").play();
-};
+  const frogSound = new Audio("music/frog-hop.mp3");
+frogSound.volume = 0.7;
+frogSound.play();
+
 
 yesCat.onclick = () => {
   questionScreen.style.display = "none";
