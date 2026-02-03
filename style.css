@@ -97,3 +97,15 @@ h1, h2 {
   line-height: 1.6;
 }
 
+#taunt-box {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 220px;
+  font-family: 'Baloo Tamma 2', cursive;
+  font-size: 18px;
+  color: #ff4f8b;
+  text-align: left;
+  pointer-events: none;
+}
