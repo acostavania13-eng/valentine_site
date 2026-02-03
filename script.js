@@ -25,8 +25,12 @@ envelope.onclick = () => {
   envelopeScreen.style.display = "none";
   letterScreen.classList.remove("hidden");
   startHearts();
-  bgMusic.play();
+
+  bgMusic.play().catch(() => {
+    console.log("Autoplay blocked until user interaction");
+  });
 };
+
 
 continueBtn.onclick = () => {
   letterScreen.style.display = "none";
