@@ -1,65 +1,82 @@
 body {
-  background: linear-gradient(135deg, #ffd6e0, #d6f5ff);
-  font-family: 'Comic Sans MS', cursive;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  background: rgb(255,166,201);
+  font-family: Arial, sans-serif;
+  overflow: hidden;
 }
 
-.container {
+.hidden {
+  display: none;
+}
+
+#envelope-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#envelope {
+  width: 200px;
+  animation: drop 1.5s ease-out;
+  cursor: pointer;
+}
+
+@keyframes drop {
+  from { transform: translateY(-500px); }
+  to { transform: translateY(0); }
+}
+
+#open-text {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.card {
   background: white;
   padding: 30px;
   border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  max-width: 400px;
-}
-
-h1 {
-  color: #ff4d6d;
-}
-
-.subtext {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.buttons {
+  max-width: 600px;
+  margin: auto;
   position: relative;
-  height: 80px;
 }
 
 button {
-  padding: 12px 22px;
-  font-size: 16px;
-  border-radius: 12px;
+  padding: 10px 20px;
   border: none;
+  background: hotpink;
+  color: white;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-#yesBtn {
-  background-color: #7bed9f;
+#letter-screen,
+#question-screen,
+#final-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-#noBtn {
-  background: none;
-  border: none;
+.choices img {
+  width: 150px;
+  margin: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+#yesCat {
+  transition: transform 0.3s;
+}
+
+#taunt {
+  text-align: center;
+  font-weight: bold;
+}
+
+.gallery img {
   position: absolute;
-  padding: 0;
-}
-
-#noBtn img {
-  width: 180px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-#noBtn img:hover {
-  transform: scale(1.5);
-}
-
-#message {
-  margin-top: 20px;
-  font-size: 18px;
+  width: 120px;
 }
