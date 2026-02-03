@@ -1,13 +1,15 @@
-
-const bgMusic = new Audio("music/opening-music.mp3");
+const bgMusic = new Audio("./music/opening-music.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.5;
+
+const frogSound = new Audio("./music/frog-hop.mp3");
+frogSound.volume = 0.7;
+
 const envelope = document.getElementById("envelope");
 const envelopeScreen = document.getElementById("envelope-screen");
 const letterScreen = document.getElementById("letter-screen");
 const continueBtn = document.getElementById("continueBtn");
 const questionScreen = document.getElementById("question-screen");
-const noMusic = new Audio("music/frog-hop.mp3");
 const yesCat = document.getElementById("yesCat");
 const taunt = document.getElementById("taunt");
 const finalScreen = document.getElementById("final-screen");
@@ -26,10 +28,9 @@ envelope.onclick = () => {
   letterScreen.classList.remove("hidden");
   startHearts();
 
-  bgMusic.play().catch(() => {
-    console.log("Autoplay blocked until user interaction");
-  });
+  bgMusic.play().catch(err => console.log(err));
 };
+
 
 
 continueBtn.onclick = () => {
@@ -42,16 +43,16 @@ noFrog.onmouseover = () => {
   const y = Math.random() * 200 - 100;
   noFrog.style.transform = `translate(${x}px, ${y}px)`;
 
-  document.getElementById("taunt-box").textContent =
+  taunt.textContent =
     phrases[Math.floor(Math.random() * phrases.length)];
 
   yesScale += 0.15;
   yesCat.style.transform = `scale(${yesScale})`;
 
-  const frogSound = new Audio("music/frog-hop.mp3");
-  frogSound.volume = 0.7;
-  frogSound.play();
+  frogSound.currentTime = 0;
+  frogSound.play().catch(err => console.log(err));
 };
+
 
 
 
