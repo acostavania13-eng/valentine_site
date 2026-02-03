@@ -1,4 +1,4 @@
-alert("JS is working!");
+
 const bgMusic = new Audio("music/opening-music.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.5;
@@ -7,6 +7,7 @@ const envelopeScreen = document.getElementById("envelope-screen");
 const letterScreen = document.getElementById("letter-screen");
 const continueBtn = document.getElementById("continueBtn");
 const questionScreen = document.getElementById("question-screen");
+const noMusic = new Audio("music/no-froggy.mp3");
 const noFrog = document.getElementById("noFrog");
 const yesCat = document.getElementById("yesCat");
 const taunt = document.getElementById("taunt");
