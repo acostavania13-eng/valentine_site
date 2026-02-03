@@ -79,10 +79,19 @@ button {
   font-weight: bold;
 }
 
-.gallery img {
-  position: absolute;
-  width: 120px;
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
 }
+
+.gallery img {
+  width: 120px;
+  height: auto;
+}
+
 
 body {
   font-family: 'Pridi', serif;
