@@ -37,7 +37,9 @@ noFrog.onmouseover = () => {
   const y = Math.random() * 200 - 100;
   noFrog.style.transform = `translate(${x}px, ${y}px)`;
 
-  taunt.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+  document.getElementById("taunt-box").textContent =
+  phrases[Math.floor(Math.random() * phrases.length)];
+
 
   yesScale += 0.15;
   yesCat.style.transform = `scale(${yesScale})`;
