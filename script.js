@@ -1,3 +1,4 @@
+alert("JS is working!");
 const bgMusic = new Audio("music/opening-music.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.5;
