@@ -40,15 +40,16 @@ noFrog.onmouseover = () => {
   noFrog.style.transform = `translate(${x}px, ${y}px)`;
 
   document.getElementById("taunt-box").textContent =
-  phrases[Math.floor(Math.random() * phrases.length)];
-
+    phrases[Math.floor(Math.random() * phrases.length)];
 
   yesScale += 0.15;
   yesCat.style.transform = `scale(${yesScale})`;
 
   const frogSound = new Audio("music/frog-hop.mp3");
-frogSound.volume = 0.7;
-frogSound.play();
+  frogSound.volume = 0.7;
+  frogSound.play();
+};
+
 
 
 yesCat.onclick = () => {
