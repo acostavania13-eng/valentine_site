@@ -2,25 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Valentine?</title>
+  <title>For You 💌</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <h1>Will you be my Valentine? 💘</h1>
-    <p class="subtext">🐸 vroom vroom 🏎️ meow 🐱</p>
+<!-- Falling envelope -->
+<div id="envelope-screen">
+  <img src="images/envelope.png" id="envelope">
+  <p id="open-text">open me</p>
+</div>
 
-    <div class="buttons">
-      <button id="yesBtn">YES 💖</button>
-      <button id="noBtn" aria-label="No">
-  <img src="frog-car-no.png" alt="frog in car saying no">
-</button>
+<!-- Letter -->
+<div id="letter-screen" class="hidden">
+  <div class="card">
+    <p>
+      Dear lil babita,<br><br>
+      i love you so much and i miss you so much. I know you've been stressed out lately
+      and have been working hard on your school work and because of that i wish to make
+      you something that will cheer you up a little.
+      <br><br>
+      I worked on this by thinking of you and putting a smile on your face even if I'm far away.
+      I know at the moment we are faraway and we cant give each other gifts but the distance
+      wont stop me from making you little gifts and giving them to you!
+      <br><br>
+      My love, you have been the best boyfriend I could have ever asked for and because of that
+      I want to ask you something.
+    </p>
+    <button id="continueBtn">continue</button>
+  </div>
+</div>
+
+<!-- Valentine question -->
+<div id="question-screen" class="hidden">
+  <div class="card">
+    <h2>Would you be my Valentine?</h2>
+    <div class="choices">
+      <img src="images/yes-cat.png" id="yesCat">
+      <img src="images/no-froggy.png" id="noFrog">
     </div>
+    <p id="taunt"></p>
+  </div>
+</div>
 
-    <p id="message"></p>
+<!-- Final screen -->
+<div id="final-screen" class="hidden">
+  <div class="card">
+    <h2>YAYYY 💖 I HAVE A VALENTINE</h2>
   </div>
 
-  <script src="script.js"></script>
+  <div class="gallery">
+    <img src="images/car-froggy.png">
+    <img src="images/happy-cat.png">
+    <img src="images/confetti-cat.png">
+    <img src="images/balloon-cat.png">
+    <img src="images/happy-frog.png">
+    <img src="images/balloon-frog.png">
+    <img src="images/card-cat.png">
+    <img src="images/flower-frog.png">
+    <img src="images/heart-frog.png">
+    <img src="images/heart-cat.png">
+    <img src="images/flower-cat.png">
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
