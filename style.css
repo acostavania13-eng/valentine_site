@@ -18,10 +18,11 @@ body {
 }
 
 #envelope {
-  width: 200px;
+  width: 220px;
   animation: drop 1.5s ease-out;
   cursor: pointer;
 }
+
 
 @keyframes drop {
   from { transform: translateY(-500px); }
@@ -35,12 +36,14 @@ body {
 
 .card {
   background: white;
-  padding: 30px;
-  border-radius: 20px;
-  max-width: 600px;
+  padding: 40px;
+  border-radius: 24px;
+  max-width: 650px;
   margin: auto;
   position: relative;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.2);
 }
+
 
 button {
   padding: 10px 20px;
