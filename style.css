@@ -118,3 +118,25 @@ h1, h2 {
   text-align: left;
   pointer-events: none;
 }
+
+#final-screen {
+  position: relative;
+  min-height: 100vh;
+}
+
+.card {
+  position: relative;
+  z-index: 2;
+}
+
+.gallery img {
+  position: absolute;
+  width: 120px;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
