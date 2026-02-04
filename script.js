@@ -11,7 +11,7 @@ const letterScreen = document.getElementById("letter-screen");
 const continueBtn = document.getElementById("continueBtn");
 const questionScreen = document.getElementById("question-screen");
 const yesCat = document.getElementById("yesCat");
-const taunt = document.getElementById("taunt");
+const tauntBox = document.getElementById("taunt-box");
 const finalScreen = document.getElementById("final-screen");
 
 const phrases = [
