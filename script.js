@@ -64,7 +64,9 @@ yesCat.onclick = () => {
   questionScreen.style.display = "none";
   finalScreen.classList.remove("hidden");
   confetti();
+  spawnFinalGifs();
 };
+
 
 function startHearts() {
   setInterval(() => {
@@ -108,3 +110,31 @@ document.querySelectorAll(".gallery img").forEach(img => {
   img.style.top = Math.random() * 80 + "%";
   img.style.left = Math.random() * 80 + "%";
 });
+
+function spawnFinalGifs() {
+  const gifList = [
+    "confetti.gif",
+    "giphy.gif",
+    "cute-frog.gif",
+    "small_frog.gif",
+    "three.gif",
+    "lil.gif",
+    "cute.gif",
+    "dancing.gif",
+    "love.gif",
+    "vibing.gif",
+    "froggy.gif",
+    "around.gif"
+  ];
+
+  gifList.forEach(gif => {
+    const img = document.createElement("img");
+    img.src = `gifs/${gif}`;
+    img.classList.add("final-gif");
+
+    img.style.left = Math.random() * 85 + "vw";
+    img.style.top = Math.random() * 80 + "vh";
+
+    finalScreen.appendChild(img);
+  });
+}
