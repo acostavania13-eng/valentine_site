@@ -197,3 +197,12 @@ h1, h2 {
   width: 180px;
   z-index: 5;
 }
+
+#envelope {
+  opacity: 0.6;
+}
+
+#envelope.unlocked {
+  opacity: 1;
+}
+
