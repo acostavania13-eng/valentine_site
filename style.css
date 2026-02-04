@@ -10,12 +10,32 @@ body {
 }
 
 #envelope-screen {
+  position: relative;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
+
+.side-gif {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;   /* adjust if you want bigger */
+  z-index: 5;
+}
+
+.left-gif {
+  left: 5%;
+}
+
+.right-gif {
+  right: 5%;
+}
+
+.open-text {
+  font-family: 'Baloo Tamma 2', cursive;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
 
 #envelope {
   width: 220px;
