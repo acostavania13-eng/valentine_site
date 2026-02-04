@@ -66,14 +66,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ========== ENVELOPE CLICK ========== */
   envelope.addEventListener("click", () => {
-    if (frogClicks < 3) return;
+  if (frogClicks < 3) return;
 
-    envelopeScreen.style.display = "none";
-    letterScreen.classList.remove("hidden");
+  envelopeScreen.style.display = "none"; 
+  letterScreen.classList.remove("hidden");
 
-    bgMusic.currentTime = 0;
-    bgMusic.play();
-  });
+  bgMusic.currentTime = 0;
+  bgMusic.play();
+});
+
 
   /* ========== CONTINUE BUTTON ========== */
   continueBtn.addEventListener("click", () => {
