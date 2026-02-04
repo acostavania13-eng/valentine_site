@@ -1,8 +1,8 @@
-const bgMusic = new Audio("./music/opening-music.mp3");
+const bgMusic = new Audio("./music/opening_music.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.5;
 
-const frogSound = new Audio("./music/frog-hop.mp3");
+const frogSound = new Audio("./music/frog_hop.mp3");
 frogSound.volume = 0.7;
 
 const envelope = document.getElementById("envelope");
@@ -28,7 +28,8 @@ envelope.onclick = () => {
   letterScreen.classList.remove("hidden");
   startHearts();
 
-  bgMusic.play().catch(err => console.log(err));
+  bgMusic.currentTime = 0;
+  bgMusic.play();
 };
 
 
@@ -39,20 +40,9 @@ continueBtn.onclick = () => {
 };
 
 noFrog.onmouseover = () => {
-  const x = Math.random() * 300 - 150;
-  const y = Math.random() * 200 - 100;
-  noFrog.style.transform = `translate(${x}px, ${y}px)`;
-
-  taunt.textContent =
-    phrases[Math.floor(Math.random() * phrases.length)];
-
-  yesScale += 0.15;
-  yesCat.style.transform = `scale(${yesScale})`;
-
   frogSound.currentTime = 0;
-  frogSound.play().catch(err => console.log(err));
+  frogSound.play();
 };
-
 
 
 
