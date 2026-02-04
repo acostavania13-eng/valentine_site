@@ -155,9 +155,7 @@ button {
   right: 8%;
 }
 
-#letter-screen,
-#question-screen,
-#final-screen {
+.screen {
   display: flex;
   justify-content: center;
   align-items: center;
