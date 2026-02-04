@@ -158,6 +158,16 @@ button {
   right: 8%;
 }
 
+#envelope-screen,
+#letter-screen,
+#question-screen,
+#final-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 .screen {
   display: flex;
   justify-content: center;
