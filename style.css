@@ -10,13 +10,13 @@ body {
   overflow: hidden;
 }
 
-/* ========== SCREEN SYSTEM (IMPORTANT) ========== */
+/* ========== SCREEN SYSTEM (CRITICAL FIX) ========== */
 .screen {
   position: absolute;
   inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .hidden {
@@ -28,7 +28,7 @@ body {
   position: relative;
 }
 
-/* Side gifs */
+/* side gifs */
 .side-gif {
   position: absolute;
   top: 50%;
@@ -40,16 +40,14 @@ body {
 .left-gif { left: 5%; }
 .right-gif { right: 5%; }
 
-/* Envelope container (NOW ANIMATES CORRECTLY) */
+/* envelope center */
 #envelope-container {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -150%);
+  transform: translate(-50%, -50%);
   text-align: center;
   z-index: 10;
-
-  animation: drop 1.5s ease-out forwards;
 }
 
 .open-text {
@@ -68,19 +66,7 @@ body {
   opacity: 1;
 }
 
-/* Drop animation FIXED */
-@keyframes drop {
-  from {
-    transform: translate(-50%, -150%);
-    opacity: 0;
-  }
-  to {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-  }
-}
-
-/* Shake stays usable */
+/* envelope shake */
 @keyframes shake {
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   25% { transform: translate(-48%, -50%) rotate(-2deg); }
@@ -96,7 +82,7 @@ body {
   left: 40px;
   width: 120px;
   cursor: pointer;
-  z-index: 20;
+  z-index: 50;
 }
 
 #frog-counter {
@@ -106,7 +92,7 @@ body {
   font-family: 'Baloo Tamma 2', cursive;
   font-size: 18px;
   color: #ff4f8b;
-  z-index: 20;
+  z-index: 50;
 }
 
 /* ========== LETTER SCREEN ========== */
@@ -114,13 +100,17 @@ body {
   position: relative;
 }
 
+/* letter card centered */
 .card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: white;
   padding: 40px;
   border-radius: 24px;
   max-width: 650px;
   box-shadow: 0 12px 35px rgba(0,0,0,0.2);
-  position: relative;
   z-index: 10;
 }
 
@@ -130,6 +120,7 @@ body {
   margin-bottom: 60px;
 }
 
+/* continue button */
 #continueBtn {
   position: absolute;
   bottom: 20px;
@@ -147,7 +138,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Letter gifs */
+/* letter gifs */
 .letter-gif {
   pointer-events: none;
   position: absolute;
@@ -161,6 +152,18 @@ body {
 .bottom-right { bottom: 8%; right: 8%; }
 
 /* ========== QUESTION SCREEN ========== */
+#question-screen {
+  position: relative;
+}
+
+#question-screen .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 h1, h2 {
   font-family: 'Baloo Tamma 2', cursive;
 }
@@ -192,9 +195,10 @@ h1, h2 {
   position: relative;
 }
 
-.gallery img {
+.final-gif {
   position: absolute;
-  width: 120px;
+  width: 180px;
+  z-index: 5;
   animation: float 6s ease-in-out infinite;
 }
 
@@ -202,10 +206,4 @@ h1, h2 {
   0% { transform: translateY(0); }
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0); }
-}
-
-.final-gif {
-  position: absolute;
-  width: 180px;
-  z-index: 5;
 }
