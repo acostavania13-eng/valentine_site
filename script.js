@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ================= AUDIO ================= */
+  /* ===== AUDIO ===== */
   const bgMusic = new Audio("./music/opening_music.mp3");
   bgMusic.loop = true;
   bgMusic.volume = 0.5;
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const frogSound = new Audio("./music/frog_hop.mp3");
   frogSound.volume = 0.7;
 
-  /* ================= ELEMENTS ================= */
+  /* ===== ELEMENTS ===== */
   const envelope = document.getElementById("envelope");
   const envelopeScreen = document.getElementById("envelope-screen");
   const letterScreen = document.getElementById("letter-screen");
@@ -17,116 +17,88 @@ document.addEventListener("DOMContentLoaded", () => {
   const noFrog = document.getElementById("noFrog");
   const tauntBox = document.getElementById("taunt-box");
   const finalScreen = document.getElementById("final-screen");
-  const counter = document.getElementById("frog-counter");
 
-  const counter = document.getElementById("frog-counter");
+  const frog = document.getElementById("frog");
+  const frogCounter = document.getElementById("frog-counter");
 
-let frogClicks = 0;
-let yesScale = 1;
-
-  // ===== UNLOCK FROG =====
-const frog = document.getElementById("frog");
-const frogCounter = document.getElementById("frog-counter");
-
-let frogClicks = 0;
-
-// lock envelope initially
-envelope.style.pointerEvents = "none";
-
-frog.addEventListener("click", () => {
-  frogClicks++;
-  frogCounter.textContent = `🐸 ${frogClicks} / 10`;
-
-  frogSound.currentTime = 0;
-  frogSound.play();
-
-  // shake envelope until unlocked
-  if (frogClicks < 3) {
-    envelope.style.animation = "shake 0.4s";
-    setTimeout(() => envelope.style.animation = "", 400);
-  }
-
-  // unlock envelope
-  if (frogClicks === 3) {
-    envelope.style.pointerEvents = "auto";
-    envelope.classList.add("unlocked");
-    frogCounter.textContent = "📩 unlocked!";
-  }
-
-  // secret 👀
-  if (frogClicks === 10) {
-    alert("👀 ok ok you win. i love you.");
-  }
-});
-
+  /* ===== STATE ===== */
+  let frogClicks = 0;
+  let yesScale = 1;
 
   const phrases = [
     "Don’t touch me!",
     "Beep beep move!",
     "Why don’t you pick me?",
-    "You’re persistent huh?",
-    "HEY—personal space!!"
+    "HEY—personal space!!",
+    "You’re persistent huh?"
   ];
 
-  /* ================= LOCK ENVELOPE ================= */
-  envelope.classList.remove("unlocked");
+  /* ===== LOCK ENVELOPE ===== */
   envelope.style.pointerEvents = "none";
+  envelope.classList.remove("unlocked");
 
-  /* ================= FROG GUARD ================= */
+  /* ===== UNLOCK FROG (CLICK) ===== */
+  frog.addEventListener("click", () => {
+    frogClicks++;
+    frogCounter.textContent = `🐸 ${frogClicks} / 10`;
+
+    frogSound.currentTime = 0;
+    frogSound.play();
+
+    // shake envelope
+    if (frogClicks < 3) {
+      envelope.style.animation = "shake 0.4s";
+      setTimeout(() => envelope.style.animation = "", 400);
+    }
+
+    // unlock
+    if (frogClicks === 3) {
+      envelope.style.pointerEvents = "auto";
+      envelope.classList.add("unlocked");
+      frogCounter.textContent = "ok ok… you can open it 💌🙄";
+    }
+
+    // secret 👀
+    if (frogClicks === 10) {
+      alert("BRO 😭 IT WAS NEVER THIS DEEP");
+    }
+  });
+
+  /* ===== NO FROG (HOVER) ===== */
   noFrog.addEventListener("mouseover", () => {
     frogClicks++;
 
-    // move frog
     const x = Math.random() * 260 - 130;
     const y = Math.random() * 180 - 90;
     noFrog.style.transform = `translate(${x}px, ${y}px)`;
 
-    // sound
     frogSound.currentTime = 0;
     frogSound.play();
 
-    // phrase
     tauntBox.textContent =
       phrases[Math.floor(Math.random() * phrases.length)];
 
-    // counter
-    counter.textContent = `🐸 clicks: ${frogClicks}`;
-
-    // grow yes cat
     yesScale += 0.12;
     yesCat.style.transform = `scale(${yesScale})`;
-
-    // unlock envelope
-    if (frogClicks === 3) {
-      tauntBox.textContent = "ok ok… you can open it 💌";
-      envelope.classList.add("unlocked");
-      envelope.style.pointerEvents = "auto";
-    }
-
-    // secret message 👀
-    if (frogClicks === 10) {
-      tauntBox.textContent = "BRO 😭 IT WAS NEVER THIS DEEP";
-    }
   });
 
-  /* ================= ENVELOPE CLICK ================= */
+  /* ===== ENVELOPE CLICK ===== */
   envelope.addEventListener("click", () => {
     if (frogClicks < 3) return;
 
     envelopeScreen.style.display = "none";
     letterScreen.classList.remove("hidden");
 
-    bgMusic.currentTime = 0;
     bgMusic.play();
   });
 
-  /* ================= CONTINUE ================= */
+  /* ===== CONTINUE ===== */
   document.getElementById("continueBtn").onclick = () => {
     letterScreen.classList.add("hidden");
     questionScreen.classList.remove("hidden");
   };
 
-  /* ================= YES ================= */
+  /* ===== YES ===== */
   yesCat.onclick = () => {
     questionScreen.style.display = "none";
     finalScreen.classList.remove("hidden");
@@ -134,7 +106,7 @@ frog.addEventListener("click", () => {
     spawnFinalGifs();
   };
 
-  /* ================= CONFETTI ================= */
+  /* ===== CONFETTI ===== */
   function confetti() {
     for (let i = 0; i < 70; i++) {
       const c = document.createElement("div");
@@ -154,7 +126,7 @@ frog.addEventListener("click", () => {
     }
   }
 
-  /* ================= FINAL GIFS ================= */
+  /* ===== FINAL GIFS ===== */
   function spawnFinalGifs() {
     const gifs = [
       "confetti.gif","giphy.gif","cute-frog.gif","small_frog.gif",
@@ -173,3 +145,4 @@ frog.addEventListener("click", () => {
   }
 
 });
+
