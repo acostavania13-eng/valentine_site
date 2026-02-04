@@ -244,3 +244,23 @@ h1, h2 {
   50%  { transform: translateY(-12px); }
   100% { transform: translateY(0); }
 }
+
+#final-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.final-card {
+  position: relative;
+  z-index: 20; /* card ALWAYS on top */
+}
+
+/* all final gifs/images */
+.final-gif {
+  position: absolute;
+  width: 160px;
+  z-index: 10; /* always visible, never behind card */
+  animation: float 6s ease-in-out infinite;
+}
+
