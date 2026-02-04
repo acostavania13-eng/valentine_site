@@ -19,6 +19,42 @@ document.addEventListener("DOMContentLoaded", () => {
   const finalScreen = document.getElementById("final-screen");
   const counter = document.getElementById("frog-counter");
 
+  // ===== UNLOCK FROG =====
+const frog = document.getElementById("frog");
+const frogCounter = document.getElementById("frog-counter");
+
+let frogClicks = 0;
+
+// lock envelope initially
+envelope.style.pointerEvents = "none";
+
+frog.addEventListener("click", () => {
+  frogClicks++;
+  frogCounter.textContent = `🐸 ${frogClicks} / 10`;
+
+  frogSound.currentTime = 0;
+  frogSound.play();
+
+  // shake envelope until unlocked
+  if (frogClicks < 3) {
+    envelope.style.animation = "shake 0.4s";
+    setTimeout(() => envelope.style.animation = "", 400);
+  }
+
+  // unlock envelope
+  if (frogClicks === 3) {
+    envelope.style.pointerEvents = "auto";
+    envelope.classList.add("unlocked");
+    frogCounter.textContent = "📩 unlocked!";
+  }
+
+  // secret 👀
+  if (frogClicks === 10) {
+    alert("👀 ok ok you win. i love you.");
+  }
+});
+
+
   /* ================= STATE ================= */
   let frogClicks = 0;
   let yesScale = 1;
