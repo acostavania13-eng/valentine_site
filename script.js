@@ -4,7 +4,7 @@ bgMusic.volume = 0.5;
 
 const frogSound = new Audio("./music/frog_hop.mp3");
 frogSound.volume = 0.7;
-
+const noFrog = document.getElementById("noFrog");
 const envelope = document.getElementById("envelope");
 const envelopeScreen = document.getElementById("envelope-screen");
 const letterScreen = document.getElementById("letter-screen");
@@ -40,8 +40,22 @@ continueBtn.onclick = () => {
 };
 
 noFrog.onmouseover = () => {
+  // move frog randomly
+  const x = Math.random() * 300 - 150;
+  const y = Math.random() * 200 - 100;
+  noFrog.style.transform = `translate(${x}px, ${y}px)`;
+
+  // play frog sound
   frogSound.currentTime = 0;
   frogSound.play();
+
+  // show random phrase
+  tauntBox.textContent =
+    phrases[Math.floor(Math.random() * phrases.length)];
+
+  // grow yes cat
+  yesScale += 0.15;
+  yesCat.style.transform = `scale(${yesScale})`;
 };
 
 
@@ -90,3 +104,7 @@ function confetti() {
     }, 16);
   }
 }
+document.querySelectorAll(".gallery img").forEach(img => {
+  img.style.top = Math.random() * 80 + "%";
+  img.style.left = Math.random() * 80 + "%";
+});
