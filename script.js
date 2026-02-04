@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const finalScreen = document.getElementById("final-screen");
   const counter = document.getElementById("frog-counter");
 
+  const counter = document.getElementById("frog-counter");
+
+let frogClicks = 0;
+let yesScale = 1;
+
   // ===== UNLOCK FROG =====
 const frog = document.getElementById("frog");
 const frogCounter = document.getElementById("frog-counter");
@@ -54,10 +59,6 @@ frog.addEventListener("click", () => {
   }
 });
 
-
-  /* ================= STATE ================= */
-  let frogClicks = 0;
-  let yesScale = 1;
 
   const phrases = [
     "Don’t touch me!",
