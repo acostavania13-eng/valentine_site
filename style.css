@@ -73,6 +73,15 @@ body {
   box-shadow: 0 12px 35px rgba(0,0,0,0.2);
 }
 
+#frog-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-family: 'Baloo Tamma 2', cursive;
+  font-size: 16px;
+  color: #ff4f8b;
+}
+
 
 button {
   padding: 10px 20px;
