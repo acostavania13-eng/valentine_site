@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const phrases = [
     "Don’t touch me!",
     "Beep beep move!",
-    "Why are you trying to touch me?",
+    "Why are you trying to touch me?🤨",
     "HEY!personal space!!",
     "You’re persistent huh?",
     "Just pick the cat already"
@@ -194,3 +194,4 @@ noFrog.addEventListener("mouseover", () => {
     finalScreen.appendChild(img);
   });
 }
+});
