@@ -155,25 +155,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ========= FINAL GIFS ========= */
   function spawnFinalGifs() {
-    const gifs = [
-      "confetti.gif","giphy.gif","cute-frog.gif","small_frog.gif",
-      "three.gif","lil.gif","cute.gif","dancing.gif"
-    ];
+  const gifs = [
+    "confetti.gif","giphy.gif","cute-frog.gif","small_frog.gif",
+    "three.gif","lil.gif","cute.gif","dancing.gif",
+    "love.gif","vibing.gif"
+  ];
 
-    const positions = [
-      { top: "5%", left: "10%" },
-      { top: "10%", right: "10%" },
-      { bottom: "10%", left: "12%" },
-      { bottom: "12%", right: "12%" }
-    ];
+  gifs.forEach(gif => {
+    const img = document.createElement("img");
+    img.src = `gifs/${gif}`;
+    img.className = "final-gif";
 
-    gifs.forEach((gif, i) => {
-      const img = document.createElement("img");
-      img.src = `gifs/${gif}`;
-      img.className = "final-gif";
-      Object.assign(img.style, positions[i % positions.length]);
-      finalScreen.appendChild(img);
-    });
-  }
+    img.style.top = Math.random() * 70 + 10 + "%";
+    img.style.left = Math.random() * 70 + 10 + "%";
+
+    finalScreen.appendChild(img);
+  });
+}
+
 
 });
