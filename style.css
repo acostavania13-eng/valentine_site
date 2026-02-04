@@ -9,6 +9,7 @@ body {
   display: none;
 }
 
+
 #envelope-screen {
   position: relative;
   height: 100vh;
@@ -128,6 +129,18 @@ button {
   box-shadow: 0 6px 15px rgba(255, 79, 139, 0.4);
 }
 
+.letter-gif {
+  pointer-events: none;
+}
+
+#letter-box {
+  position: relative;
+  z-index: 10;
+}
+
+.letter-gif {
+  z-index: 5;
+}
 
 .letter-gif {
   position: absolute;
@@ -287,4 +300,5 @@ h1, h2 {
   font-size: 18px;
   color: #ff4f8b;
 }
+
 
