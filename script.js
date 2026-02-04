@@ -42,22 +42,27 @@ document.addEventListener("DOMContentLoaded", () => {
   envelope.classList.remove("unlocked");
 
   /* ========= FROG UNLOCK ========= */
-  frog.addEventListener("click", () => {
-    frogClicks++;
-    frogCounter.textContent = `🐸 ${frogClicks} / 3`;
+ frog.addEventListener("click", () => {
+  frogClicks++;
+  frogCounter.textContent = `🐸 ${frogClicks} / 10`;
 
-    frogSound.currentTime = 0;
-    frogSound.play();
+  frogSound.currentTime = 0;
+  frogSound.play();
 
-    envelope.style.animation = "shake 0.4s";
-    setTimeout(() => envelope.style.animation = "", 400);
+  envelope.style.animation = "shake 0.4s";
+  setTimeout(() => envelope.style.animation = "", 400);
 
-    if (frogClicks >= 3) {
-      envelope.style.pointerEvents = "auto";
-      envelope.classList.add("unlocked");
-      frogCounter.textContent = "Ok fine you win 😒";
-    }
-  });
+  if (frogClicks === 3) {
+    envelope.style.pointerEvents = "auto";
+    envelope.classList.add("unlocked");
+    frogCounter.textContent = "Ok fine you win 😒";
+  }
+
+  if (frogClicks === 10) {
+    alert("OK OK DAMN 😭 you win, stop bullying the frog");
+  }
+});
+
 
   /* ========= OPEN ENVELOPE ========= */
   envelope.addEventListener("click", () => {
