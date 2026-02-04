@@ -77,9 +77,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ========== CONTINUE BUTTON ========== */
   continueBtn.addEventListener("click", () => {
-    letterScreen.classList.add("hidden");
-    questionScreen.classList.remove("hidden");
-  });
+  console.log("CONTINUE CLICKED");
+  letterScreen.classList.add("hidden");
+  questionScreen.classList.remove("hidden");
+});
+
 
   /* ========== NO FROG TAUNTS ========== */
   noFrog.addEventListener("mouseover", () => {
