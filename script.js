@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+  let frogUnlocks = 0;
+envelope.style.pointerEvents = "none";
 const bgMusic = new Audio("./music/opening_music.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.5;
@@ -140,3 +142,29 @@ function spawnFinalGifs() {
   });
 }
 });
+
+noFrog.onmouseover = () => {
+  frogUnlocks++;
+
+  const x = Math.random() * 300 - 150;
+  const y = Math.random() * 200 - 100;
+  noFrog.style.transform = `translate(${x}px, ${y}px)`;
+
+  frogSound.currentTime = 0;
+  frogSound.play();
+
+  tauntBox.textContent =
+    phrases[Math.floor(Math.random() * phrases.length)];
+
+  yesScale += 0.15;
+  yesCat.style.transform = `scale(${yesScale})`;
+
+  if (frogUnlocks >= 3) {
+    tauntBox.textContent = "ok fine… open it 💌🐸";
+    envelope.style.pointerEvents = "auto";
+  }
+};
+if (frogUnlocks >= 3) {
+  envelope.classList.add("unlocked");
+}
+
