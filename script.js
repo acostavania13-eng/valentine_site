@@ -34,7 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "Why are you trying to touch me?🤨",
     "HEY! personal space!!",
     "You’re persistent huh?",
-    "Just pick the cat already"
+    "Just pick the cat already",
+    "I'm literally running out of places to jump!"
+    
   ];
 
   /* ========= INIT ========= */
@@ -83,23 +85,34 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ========= NO FROG ========= */
-  noFrog.addEventListener("mouseover", () => {
-    const x = Math.random() * 260 - 130;
-    const y = Math.random() * 180 - 90;
-    noFrog.style.transform = `translate(${x}px, ${y}px)`;
+ /* ========== NO FROG TAUNTS ========== */
+let noCount = 0;
+let easterEggShown = false;
 
-    frogSound.currentTime = 0;
-    frogSound.play();
+noFrog.addEventListener("mouseover", () => {
+  const x = Math.random() * 260 - 130;
+  const y = Math.random() * 180 - 90;
+  noFrog.style.transform = `translate(${x}px, ${y}px)`;
 
-    noCount++;
+  frogSound.currentTime = 0;
+  frogSound.play();
+
+  noCount++;
+
+  // show easter egg ONCE
+  if (noCount === 5 && !easterEggShown) {
+    tauntBox.textContent = "bestie… it’s not an option 🤨";
+    easterEggShown = true;
+  } else {
+    // keep rotating phrases forever
     tauntBox.textContent =
-      noCount >= 5
-        ? "bestie… it’s not an option 🤨"
-        : phrases[Math.floor(Math.random() * phrases.length)];
+      phrases[Math.floor(Math.random() * phrases.length)];
+  }
 
-    yesScale += 0.12;
-    yesCat.style.transform = `scale(${yesScale})`;
-  });
+  yesScale += 0.12;
+  yesCat.style.transform = `scale(${yesScale})`;
+});
+
 
   /* ========= YES ========= */
   yesCat.addEventListener("click", () => {
