@@ -131,20 +131,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ========== FINAL GIFS ========== */
   function spawnFinalGifs() {
-    const gifs = [
-      "confetti.gif","giphy.gif","cute-frog.gif","small_frog.gif",
-      "three.gif","lil.gif","cute.gif","dancing.gif",
-      "love.gif","vibing.gif","froggy.gif","around.gif"
-    ];
+  const gifs = [
+    "confetti.gif","giphy.gif","cute-frog.gif","small_frog.gif",
+    "three.gif","lil.gif","cute.gif","dancing.gif",
+    "love.gif","vibing.gif","froggy.gif","around.gif"
+  ];
 
-    gifs.forEach(gif => {
-      const img = document.createElement("img");
-      img.src = `gifs/${gif}`;
-      img.className = "final-gif";
-      img.style.left = Math.random() * 85 + "vw";
-      img.style.top = Math.random() * 80 + "vh";
-      finalScreen.appendChild(img);
-    });
-  }
+  const positions = [
+    { top: "5%", left: "10%" },
+    { top: "10%", right: "10%" },
+    { bottom: "10%", left: "12%" },
+    { bottom: "12%", right: "12%" },
+    { top: "50%", left: "5%" },
+    { top: "50%", right: "5%" }
+  ];
 
-});
+  gifs.forEach((gif, i) => {
+    const img = document.createElement("img");
+    img.src = `gifs/${gif}`;
+    img.className = "final-gif";
+
+    const pos = positions[i % positions.length];
+    Object.assign(img.style, pos);
+
+    finalScreen.appendChild(img);
+  });
+}
