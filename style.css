@@ -190,38 +190,57 @@ h1, h2 {
   pointer-events: none;
 }
 
-/* ========== FINAL SCREEN ========== */
+/* ========== FINAL SCREEN (CLEAN + STABLE) ========== */
+
 #final-screen {
   position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.final-gif {
-  position: absolute;
-  width: 180px;
-  z-index: 5;
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
-}
-
-/* ========== FINAL SCREEN FIX ========== */
-
-/* Make sure the card is on top */
+/* White card stays centered */
 #final-screen .card {
+  position: relative;
   z-index: 20;
 }
 
-/* Floating images/gifs visible around it */
-#final-screen img {
-  z-index: 10;
+/* All images float AROUND the card */
+#final-screen .gallery img,
+#final-screen .final-gif {
+  position: absolute;
+  z-index: 15;
+  width: 110px;
+  animation: float 6s ease-in-out infinite;
 }
 
-/* OPTIONAL: if you want SOME gifs in front of the card */
-#final-screen .front {
-  z-index: 30;
+/* Smaller main characters */
+#final-screen img[src*="car-froggy"],
+#final-screen img[src*="happy-cat"] {
+  width: 85px;
+  z-index: 25; /* slightly in front */
 }
 
+/* Specific placements around the card */
+#final-screen img[src*="car-froggy"] {
+  top: 55%;
+  left: 20%;
+}
+
+#final-screen img[src*="happy-cat"] {
+  top: 55%;
+  right: 20%;
+}
+
+/* Other images auto-spread */
+#final-screen .gallery img:not([src*="car-froggy"]):not([src*="happy-cat"]) {
+  top: calc(10% + (80% * var(--rand-y)));
+  left: calc(10% + (80% * var(--rand-x)));
+}
+
+/* Floating animation */
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
