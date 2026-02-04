@@ -207,3 +207,21 @@ h1, h2 {
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0); }
 }
+
+/* ========== FINAL SCREEN FIX ========== */
+
+/* Make sure the card is on top */
+#final-screen .card {
+  z-index: 20;
+}
+
+/* Floating images/gifs visible around it */
+#final-screen img {
+  z-index: 10;
+}
+
+/* OPTIONAL: if you want SOME gifs in front of the card */
+#final-screen .front {
+  z-index: 30;
+}
+
