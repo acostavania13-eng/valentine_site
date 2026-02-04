@@ -4,11 +4,17 @@
 }
 
 body {
-  margin: 0;
-  background: rgb(255,166,201);
-  font-family: 'Pridi', serif;
-  overflow: hidden;
+  background: linear-gradient(-45deg, #ff9ecf, #ffc1dd, #ff8fcf);
+  background-size: 400% 400%;
+  animation: bgFlow 10s ease infinite;
 }
+
+@keyframes bgFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 
 /* ========== SCREEN SYSTEM (CRITICAL FIX) ========== */
 .screen {
