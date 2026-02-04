@@ -68,12 +68,13 @@ document.addEventListener("DOMContentLoaded", () => {
   envelope.addEventListener("click", () => {
   if (frogClicks < 3) return;
 
-  envelopeScreen.style.display = "none"; 
+  envelopeScreen.classList.add("hidden");
   letterScreen.classList.remove("hidden");
 
   bgMusic.currentTime = 0;
   bgMusic.play();
 });
+
 
 
   /* ========== CONTINUE BUTTON ========== */
@@ -102,11 +103,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ========== YES CLICK ========== */
   yesCat.addEventListener("click", () => {
-    questionScreen.style.display = "none";
-    finalScreen.classList.remove("hidden");
-    confetti();
-    spawnFinalGifs();
-  });
+  questionScreen.classList.add("hidden");
+  finalScreen.classList.remove("hidden");
+  confetti();
+  spawnFinalGifs();
+});
 
   /* ========== CONFETTI ========== */
   function confetti() {
