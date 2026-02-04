@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("CONTINUE CLICKED");
   letterScreen.classList.add("hidden");
   questionScreen.classList.remove("hidden");
+  spawnHearts();
 });
 
 function spawnHearts() {
@@ -91,46 +92,51 @@ function spawnHearts() {
     heart.textContent = "💖";
     heart.style.position = "absolute";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.bottom = "-20px";
-    heart.style.fontSize = "20px";
+    heart.style.bottom = "-30px";
+    heart.style.fontSize = "22px";
+    heart.style.zIndex = "5";
     document.body.appendChild(heart);
 
-    const rise = setInterval(() => {
-      heart.style.bottom = heart.offsetTop + 3 + "px";
-      if (heart.offsetTop > window.innerHeight) {
+    let rise = -30;
+
+    const floatUp = setInterval(() => {
+      rise += 2;
+      heart.style.bottom = rise + "px";
+
+      if (rise > window.innerHeight) {
         heart.remove();
-        clearInterval(rise);
+        clearInterval(floatUp);
       }
     }, 16);
-  }, 800);
+  }, 900);
 }
 
+
   
-  /* ========== NO FROG TAUNTS ========== */
-  noFrog.addEventListener("mouseover", () => {
-    const x = Math.random() * 260 - 130;
-    const y = Math.random() * 180 - 90;
-    noFrog.style.transform = `translate(${x}px, ${y}px)`;
-
-    frogSound.currentTime = 0;
-    frogSound.play();
-
-    tauntBox.textContent =
-      phrases[Math.floor(Math.random() * phrases.length)];
-
-    let noCount = 0;
+ /* ========== NO FROG TAUNTS ========== */
+let noCount = 0;
 
 noFrog.addEventListener("mouseover", () => {
+  const x = Math.random() * 260 - 130;
+  const y = Math.random() * 180 - 90;
+  noFrog.style.transform = `translate(${x}px, ${y}px)`;
+
+  frogSound.currentTime = 0;
+  frogSound.play();
+
   noCount++;
+
   if (noCount === 5) {
-    tauntBox.textContent = "bestie… it’s not an option 😭";
+    tauntBox.textContent = "bestie… it’s not an option 🤨";
+  } else {
+    tauntBox.textContent =
+      phrases[Math.floor(Math.random() * phrases.length)];
   }
+
+  yesScale += 0.12;
+  yesCat.style.transform = `scale(${yesScale})`;
 });
 
-    
-    yesScale += 0.12;
-    yesCat.style.transform = `scale(${yesScale})`;
-  });
 
   /* ========== YES CLICK ========== */
   yesCat.addEventListener("click", () => {
