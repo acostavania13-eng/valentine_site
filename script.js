@@ -86,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ========= NO FROG ========= */
 /* ========== NO FROG TAUNTS ========== */
-let noCount = 0;
 let alert5Shown = false;
 let alert10Shown = false;
 
