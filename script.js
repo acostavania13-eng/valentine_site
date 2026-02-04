@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {
 const bgMusic = new Audio("./music/opening_music.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.5;
@@ -138,3 +139,4 @@ function spawnFinalGifs() {
     finalScreen.appendChild(img);
   });
 }
+});
