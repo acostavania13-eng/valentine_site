@@ -28,6 +28,7 @@ body {
   position: relative;
 }
 
+/* Side gifs */
 .side-gif {
   position: absolute;
   top: 50%;
@@ -39,13 +40,16 @@ body {
 .left-gif { left: 5%; }
 .right-gif { right: 5%; }
 
+/* Envelope container (NOW ANIMATES CORRECTLY) */
 #envelope-container {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -150%);
   text-align: center;
   z-index: 10;
+
+  animation: drop 1.5s ease-out forwards;
 }
 
 .open-text {
@@ -64,6 +68,19 @@ body {
   opacity: 1;
 }
 
+/* Drop animation FIXED */
+@keyframes drop {
+  from {
+    transform: translate(-50%, -150%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+/* Shake stays usable */
 @keyframes shake {
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   25% { transform: translate(-48%, -50%) rotate(-2deg); }
@@ -79,7 +96,7 @@ body {
   left: 40px;
   width: 120px;
   cursor: pointer;
-  z-index: 10;
+  z-index: 20;
 }
 
 #frog-counter {
@@ -89,6 +106,7 @@ body {
   font-family: 'Baloo Tamma 2', cursive;
   font-size: 18px;
   color: #ff4f8b;
+  z-index: 20;
 }
 
 /* ========== LETTER SCREEN ========== */
@@ -191,4 +209,3 @@ h1, h2 {
   width: 180px;
   z-index: 5;
 }
-
