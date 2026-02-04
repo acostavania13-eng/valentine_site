@@ -191,3 +191,9 @@ h1, h2 {
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0); }
 }
+
+.final-gif {
+  position: absolute;
+  width: 180px;
+  z-index: 5;
+}
