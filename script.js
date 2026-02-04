@@ -194,4 +194,3 @@ noFrog.addEventListener("mouseover", () => {
     finalScreen.appendChild(img);
   });
 }
-});
