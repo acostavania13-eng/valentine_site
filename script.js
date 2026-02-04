@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ===== AUDIO =====
+  /* ================= AUDIO ================= */
   const bgMusic = new Audio("./music/opening_music.mp3");
   bgMusic.loop = true;
   bgMusic.volume = 0.5;
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const frogSound = new Audio("./music/frog_hop.mp3");
   frogSound.volume = 0.7;
 
-  // ===== ELEMENTS =====
+  /* ================= ELEMENTS ================= */
   const envelope = document.getElementById("envelope");
   const envelopeScreen = document.getElementById("envelope-screen");
   const letterScreen = document.getElementById("letter-screen");
@@ -17,58 +17,79 @@ document.addEventListener("DOMContentLoaded", () => {
   const noFrog = document.getElementById("noFrog");
   const tauntBox = document.getElementById("taunt-box");
   const finalScreen = document.getElementById("final-screen");
+  const counter = document.getElementById("frog-counter");
 
-  // ===== STATE =====
+  /* ================= STATE ================= */
+  let frogClicks = 0;
   let yesScale = 1;
-  let frogUnlocks = 0;
 
   const phrases = [
     "Don’t touch me!",
     "Beep beep move!",
     "Why don’t you pick me?",
-    "Ha! Ha! You can’t catch me!"
+    "You’re persistent huh?",
+    "HEY—personal space!!"
   ];
 
-  // LOCK envelope at start
+  /* ================= LOCK ENVELOPE ================= */
+  envelope.classList.remove("unlocked");
   envelope.style.pointerEvents = "none";
-  envelope.style.opacity = "0.6";
 
-  // ===== FROG GUARD LOGIC =====
-  noFrog.onmouseover = () => {
-    frogUnlocks++;
+  /* ================= FROG GUARD ================= */
+  noFrog.addEventListener("mouseover", () => {
+    frogClicks++;
 
-    const x = Math.random() * 300 - 150;
-    const y = Math.random() * 200 - 100;
+    // move frog
+    const x = Math.random() * 260 - 130;
+    const y = Math.random() * 180 - 90;
     noFrog.style.transform = `translate(${x}px, ${y}px)`;
 
+    // sound
     frogSound.currentTime = 0;
     frogSound.play();
 
+    // phrase
     tauntBox.textContent =
       phrases[Math.floor(Math.random() * phrases.length)];
 
-    yesScale += 0.15;
+    // counter
+    counter.textContent = `🐸 clicks: ${frogClicks}`;
+
+    // grow yes cat
+    yesScale += 0.12;
     yesCat.style.transform = `scale(${yesScale})`;
 
-    if (frogUnlocks >= 3) {
-      tauntBox.textContent = "ok fine… open it 💌🐸";
+    // unlock envelope
+    if (frogClicks === 3) {
+      tauntBox.textContent = "ok ok… you can open it 💌";
+      envelope.classList.add("unlocked");
       envelope.style.pointerEvents = "auto";
-      envelope.style.opacity = "1";
     }
-  };
 
-  // ===== ENVELOPE =====
-  envelope.onclick = () => {
-    if (frogUnlocks < 3) return;
+    // secret message 👀
+    if (frogClicks === 10) {
+      tauntBox.textContent = "BRO 😭 IT WAS NEVER THIS DEEP";
+    }
+  });
+
+  /* ================= ENVELOPE CLICK ================= */
+  envelope.addEventListener("click", () => {
+    if (frogClicks < 3) return;
 
     envelopeScreen.style.display = "none";
     letterScreen.classList.remove("hidden");
 
     bgMusic.currentTime = 0;
     bgMusic.play();
+  });
+
+  /* ================= CONTINUE ================= */
+  document.getElementById("continueBtn").onclick = () => {
+    letterScreen.classList.add("hidden");
+    questionScreen.classList.remove("hidden");
   };
 
-  // ===== YES CLICK =====
+  /* ================= YES ================= */
   yesCat.onclick = () => {
     questionScreen.style.display = "none";
     finalScreen.classList.remove("hidden");
@@ -76,47 +97,38 @@ document.addEventListener("DOMContentLoaded", () => {
     spawnFinalGifs();
   };
 
-  // ===== CONFETTI =====
+  /* ================= CONFETTI ================= */
   function confetti() {
-    for (let i = 0; i < 80; i++) {
-      const conf = document.createElement("div");
-      conf.textContent = "🎉";
-      conf.style.position = "absolute";
-      conf.style.left = Math.random() * 100 + "vw";
-      conf.style.top = "-20px";
-      document.body.appendChild(conf);
+    for (let i = 0; i < 70; i++) {
+      const c = document.createElement("div");
+      c.textContent = "🎉";
+      c.style.position = "absolute";
+      c.style.left = Math.random() * 100 + "vw";
+      c.style.top = "-20px";
+      document.body.appendChild(c);
 
       const fall = setInterval(() => {
-        conf.style.top = conf.offsetTop + 4 + "px";
-        if (conf.offsetTop > window.innerHeight) {
-          conf.remove();
+        c.style.top = c.offsetTop + 4 + "px";
+        if (c.offsetTop > window.innerHeight) {
+          c.remove();
           clearInterval(fall);
         }
       }, 16);
     }
   }
 
-  // ===== FINAL GIFS =====
+  /* ================= FINAL GIFS ================= */
   function spawnFinalGifs() {
-    const gifList = [
-      "confetti.gif",
-      "giphy.gif",
-      "cute-frog.gif",
-      "small_frog.gif",
-      "three.gif",
-      "lil.gif",
-      "cute.gif",
-      "dancing.gif",
-      "love.gif",
-      "vibing.gif",
-      "froggy.gif",
-      "around.gif"
+    const gifs = [
+      "confetti.gif","giphy.gif","cute-frog.gif","small_frog.gif",
+      "three.gif","lil.gif","cute.gif","dancing.gif",
+      "love.gif","vibing.gif","froggy.gif","around.gif"
     ];
 
-    gifList.forEach(gif => {
+    gifs.forEach(gif => {
       const img = document.createElement("img");
       img.src = `gifs/${gif}`;
-      img.classList.add("final-gif");
+      img.className = "final-gif";
       img.style.left = Math.random() * 85 + "vw";
       img.style.top = Math.random() * 80 + "vh";
       finalScreen.appendChild(img);
