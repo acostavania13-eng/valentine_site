@@ -97,10 +97,37 @@ button {
   height: 100vh;
 }
 
+/* Letter card layout */
 #letter-box {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  z-index: 10;
 }
+
+/* Push text away from button */
+#letter-box p {
+  margin-bottom: 60px;
+}
+
+/* Continue button bottom-right */
+#continueBtn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: hotpink;
+  font-family: 'Baloo Tamma 2', cursive;
+  font-size: 16px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+#continueBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 79, 139, 0.4);
+}
+
 
 .letter-gif {
   position: absolute;
