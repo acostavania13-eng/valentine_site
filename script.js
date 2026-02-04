@@ -30,9 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const phrases = [
     "Don’t touch me!",
     "Beep beep move!",
-    "Why don’t you pick me?",
-    "HEY—personal space!!",
-    "You’re persistent huh?"
+    "Why are you trying to touch me?",
+    "HEY!personal space!!",
+    "You’re persistent huh?",
+    "Just pick the cat already"
   ];
 
   /* ========== LOCK ENVELOPE INITIALLY ========== */
@@ -84,7 +85,27 @@ document.addEventListener("DOMContentLoaded", () => {
   questionScreen.classList.remove("hidden");
 });
 
+function spawnHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.textContent = "💖";
+    heart.style.position = "absolute";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "-20px";
+    heart.style.fontSize = "20px";
+    document.body.appendChild(heart);
 
+    const rise = setInterval(() => {
+      heart.style.bottom = heart.offsetTop + 3 + "px";
+      if (heart.offsetTop > window.innerHeight) {
+        heart.remove();
+        clearInterval(rise);
+      }
+    }, 16);
+  }, 800);
+}
+
+  
   /* ========== NO FROG TAUNTS ========== */
   noFrog.addEventListener("mouseover", () => {
     const x = Math.random() * 260 - 130;
@@ -97,6 +118,16 @@ document.addEventListener("DOMContentLoaded", () => {
     tauntBox.textContent =
       phrases[Math.floor(Math.random() * phrases.length)];
 
+    let noCount = 0;
+
+noFrog.addEventListener("mouseover", () => {
+  noCount++;
+  if (noCount === 5) {
+    tauntBox.textContent = "bestie… it’s not an option 😭";
+  }
+});
+
+    
     yesScale += 0.12;
     yesCat.style.transform = `scale(${yesScale})`;
   });
