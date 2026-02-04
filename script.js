@@ -85,30 +85,40 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ========= NO FROG ========= */
- /* ========== NO FROG TAUNTS ========== */
+/* ========== NO FROG TAUNTS ========== */
 let noCount = 0;
-let easterEggShown = false;
+let alert5Shown = false;
+let alert10Shown = false;
 
 noFrog.addEventListener("mouseover", () => {
+  // move the no frog
   const x = Math.random() * 260 - 130;
   const y = Math.random() * 180 - 90;
   noFrog.style.transform = `translate(${x}px, ${y}px)`;
 
+  // sound
   frogSound.currentTime = 0;
   frogSound.play();
 
+  // count hovers
   noCount++;
 
-  // show easter egg ONCE
-  if (noCount === 5 && !easterEggShown) {
-    tauntBox.textContent = "bestie… it’s not an option 🤨";
-    easterEggShown = true;
-  } else {
-    // keep rotating phrases forever
-    tauntBox.textContent =
-      phrases[Math.floor(Math.random() * phrases.length)];
+  // always change phrase
+  tauntBox.textContent =
+    phrases[Math.floor(Math.random() * phrases.length)];
+
+  // easter egg alerts
+  if (noCount === 5 && !alert5Shown) {
+    alert("bestie… it’s not an option 🤨");
+    alert5Shown = true;
   }
 
+  if (noCount === 10 && !alert10Shown) {
+    alert("BRO JUST CLICK YES 😭");
+    alert10Shown = true;
+  }
+
+  // yes button grows
   yesScale += 0.12;
   yesCat.style.transform = `scale(${yesScale})`;
 });
