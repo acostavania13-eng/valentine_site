@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const frog = document.getElementById("frog");
   const frogCounter = document.getElementById("frog-counter");
+  const continueBtn = document.getElementById("continueBtn"); 
 
   /* ===== STATE ===== */
   let frogClicks = 0;
@@ -93,7 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ===== CONTINUE ===== */
-  document.getElementById("continueBtn").onclick = () => {
+  continueBtn.addEventListener("click", () => {
+  letterScreen.classList.add("hidden");
+  questionScreen.classList.remove("hidden");
+});
     letterScreen.classList.add("hidden");
     questionScreen.classList.remove("hidden");
   };
